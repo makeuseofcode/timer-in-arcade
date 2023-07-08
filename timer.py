@@ -8,7 +8,6 @@ white = arcade.color.WHITE
 blue = arcade.color.BLUE
 green = arcade.color.GREEN
 
-import time
 
 class Timer:
     def __init__(self, duration):
