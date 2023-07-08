@@ -4,6 +4,12 @@ import time
 WIDTH = 800
 HEIGHT = 600
 
+white = arcade.color.WHITE
+blue = arcade.color.BLUE
+green = arcade.color.GREEN
+
+import time
+
 class Timer:
     def __init__(self, duration):
         self.duration = duration
@@ -25,45 +31,27 @@ class Timer:
     def is_expired(self):
         return self.get_elapsed_time() >= self.duration
 
-
 class GameWindow(arcade.Window):
     def __init__(self):
         super().__init__(WIDTH, HEIGHT, "Simple Game")
         self.player_x = WIDTH // 2
         self.player_y = HEIGHT // 2
-        self.timer = Timer(10)
-
-    def on_key_press(self, key, modifiers):
-        if key == arcade.key.SPACE:
-            self.timer.start()
-
-    def on_draw(self):
-        # Existing code
-        if self.timer.is_running:
-            elapsed_time = self.timer.get_elapsed_time()
-            remaining_time = max(self.timer.duration - elapsed_time, 0)
-            print(f"Countdown: {remaining_time:.1f} seconds")
-
-
-class GameWindow(arcade.Window):
-    def __init__(self):
-        super().__init__(WIDTH, HEIGHT, "Simple Game")
-        self.player_x = WIDTH // 2
-        self.player_y = HEIGHT // 2
-        self.timer = Timer(10)
+        self.timer = Timer(5)
 
     def setup(self):
-        arcade.set_background_color(arcade.color.WHITE)
+        arcade.set_background_color(white)
 
     def on_draw(self):
         arcade.start_render()
-        arcade.draw_rectangle_filled(self.player_x, self.player_y, 50, 50, arcade.color.BLUE)
-        arcade.draw_rectangle_filled(WIDTH // 2, HEIGHT // 4, WIDTH, 10, arcade.color.GREEN)
+        arcade.draw_rectangle_filled(self.player_x, 
+        self.player_y, 50, 50, blue)
+        arcade.draw_rectangle_filled(WIDTH // 2, 
+        HEIGHT // 4, WIDTH, 10, green)
         if self.timer.is_running:
             elapsed_time = self.timer.get_elapsed_time()
-            remaining_time = max(self.timer.duration - elapsed_time, 0)
+            r_time = self.timer.duration - elapsed_time
+            remaining_time = max(r_time, 0)
             print(f"Countdown: {remaining_time:.1f} seconds")
-        
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.LEFT:
@@ -80,3 +68,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
