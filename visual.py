@@ -52,13 +52,9 @@ class GameWindow(arcade.Window):
             elapsed_time = self.timer.get_elapsed_time()
             r_time = self.timer.duration - elapsed_time
             remaining_time = max(r_time, 0)
-            arcade.draw_text(
-                f"Countdown: {remaining_time:.1f} seconds",
-                10,
-                10,
-                black,
-                18,
-            )
+            text = f"Countdown: {remaining_time:.1f} seconds"
+            arcade.draw_text(text, 10, 10, black, 18)
+
         if self.timer.is_expired():
             self.draw_rectangle()
     def draw_rectangle(self):
